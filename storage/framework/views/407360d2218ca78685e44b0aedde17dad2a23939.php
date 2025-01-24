@@ -168,9 +168,9 @@
         </a>
 
     <?php endif; ?>
-        <!-- <a href="<?php echo e(route('settings')); ?>" class="btn btn-square text-sm <?php echo e(request()->is('settings*') ? 'active' : ''); ?>">
+        <a href="<?php echo e(route('settings')); ?>" class="btn btn-square text-sm <?php echo e(request()->is('settings*') ? 'active' : ''); ?>">
             <span class="btn-inner--icon d-block"><i class="fas fa-cogs fa-2x"></i></span>
             <span class="btn-inner--icon d-block pt-2"><?php echo e(__('Settings')); ?></span>
-        </a> -->
+        </a>
 </div>
 <?php /**PATH C:\xampp\htdocs\Tasklyte\resources\views/partials/admin/sidebar.blade.php ENDPATH**/ ?>

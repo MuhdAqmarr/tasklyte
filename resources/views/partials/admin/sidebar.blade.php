@@ -174,8 +174,8 @@
         </a>
 
     @endif
-        <!-- <a href="{{ route('settings') }}" class="btn btn-square text-sm {{ request()->is('settings*') ? 'active' : '' }}">
+        <a href="{{ route('settings') }}" class="btn btn-square text-sm {{ request()->is('settings*') ? 'active' : '' }}">
             <span class="btn-inner--icon d-block"><i class="fas fa-cogs fa-2x"></i></span>
             <span class="btn-inner--icon d-block pt-2">{{__('Settings')}}</span>
-        </a> -->
+        </a>
 </div>
