@@ -13,7 +13,7 @@
 
         <div class="col-12 col-md-12">
             <div class="form-group">
-                {{ Form::label('title', __('Project name'), ['class' => 'form-control-label']) }}
+                {{ Form::label('title', __('Task name'), ['class' => 'form-control-label']) }}
                 {{ Form::text('title', null, ['class' => 'form-control', 'required' => 'required']) }}
             </div>
         </div>
@@ -32,7 +32,7 @@
         </div>
         <div class="col-12 col-md-12">
             <div class="form-group">
-                {{ Form::label('image', __('Project Image'), ['class' => 'form-control-label']) }}
+                {{ Form::label('image', __('Task Image'), ['class' => 'form-control-label']) }}
                 <input type="file" name="image" id="image" class="custom-input-file" accept="image/*"
                     data-filename="edit-product-image"
                     onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" />
@@ -46,13 +46,13 @@
 
             </div>
         </div>
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-12">
             <div class="form-group">
                 {{ Form::label('estimated_hrs', __('Estimated Hours'), ['class' => 'form-control-label']) }}
                 {{ Form::number('estimated_hrs', null, ['class' => 'form-control', 'min' => '0', 'maxlength' => '8']) }}
             </div>
         </div>
-        <div class="col-12 col-md-4">
+        <!-- <div class="col-12 col-md-4">
             <div class="form-group">
                 {{ Form::label('budget', __('Budget'), ['class' => 'form-control-label']) }}
                 {{ Form::number('budget', null, ['class' => 'form-control', 'step' => '0.01']) }}
@@ -70,7 +70,7 @@
                     @endforeach
                 </select>
             </div>
-        </div>
+        </div> -->
         <div class="col-12 col-md-12">
             <div class="form-group">
                 {{ Form::label('descriptions', __('Description'), ['class' => 'form-control-label']) }}
@@ -79,13 +79,13 @@
                 {{ Form::textarea('descriptions', null, ['class' => 'form-control', 'rows' => '3', 'data-toggle' => 'autosize']) }}
             </div>
         </div>
-        <div class="col-12 col-md-12">
+        <!-- <div class="col-12 col-md-12">
             <div class="form-group">
                 {{ Form::label('tags', __('Tags'), ['class' => 'form-control-label']) }}
                 <small class="form-text text-muted mb-2 mt-0">{{ __('Seprated By Comma') }}</small>
                 {{ Form::text('tags', null, ['class' => 'form-control', 'data-toggle' => 'tags', 'placeholder' => __('Type here..')]) }}
             </div>
-        </div>
+        </div> -->
     </div>
 
 <div class="text-right">

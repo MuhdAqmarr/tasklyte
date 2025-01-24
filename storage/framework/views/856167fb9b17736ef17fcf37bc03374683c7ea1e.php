@@ -1,5 +1,5 @@
 <?php $__env->startSection('title'); ?>
-    <?php echo e(__('Projects')); ?>
+    <?php echo e(__('Tasks')); ?>
 
 <?php $__env->stopSection(); ?>
 
@@ -65,7 +65,7 @@
     </div>
     <?php if(Auth::user()->type != 'client'): ?>
         <?php if($allow == true): ?>
-            <a href="#" class="btn btn-sm btn-white btn-icon-only rounded-circle ml-2" data-url="<?php echo e(route('projects.create')); ?>" data-ajax-popup="true" data-size="lg" data-title="<?php echo e(__('Create Project')); ?>">
+            <a href="#" class="btn btn-sm btn-white btn-icon-only rounded-circle ml-2" data-url="<?php echo e(route('projects.create')); ?>" data-ajax-popup="true" data-size="lg" data-title="<?php echo e(__('Create Task')); ?>">
                 <span class="btn-inner--icon"><i class="fas fa-plus"></i></span>
             </a>
         <?php else: ?>
@@ -74,11 +74,11 @@
             </a>
         <?php endif; ?>
     <?php endif; ?>
-    <a href="<?php echo e(route('project.export')); ?>" class="btn btn-sm btn-white btn-icon-only rounded-circle ml-2" data-title="<?php echo e(__('Export Project CSV file')); ?>" data-toggle="tooltip">
+    <a href="<?php echo e(route('project.export')); ?>" class="btn btn-sm btn-white btn-icon-only rounded-circle ml-2" data-title="<?php echo e(__('Export Task CSV file')); ?>" data-toggle="tooltip">
         <i class="fa fa-file-excel"></i>
     </a>
 
-    <a href="#" class="btn btn-sm btn-white btn-icon-only rounded-circle" data-url="<?php echo e(route('project.file.import')); ?>" data-ajax-popup="true" data-title="<?php echo e(__('Import Project CSV file')); ?>" data-toggle="tooltip">
+    <a href="#" class="btn btn-sm btn-white btn-icon-only rounded-circle" data-url="<?php echo e(route('project.file.import')); ?>" data-ajax-popup="true" data-title="<?php echo e(__('Import Task CSV file')); ?>" data-toggle="tooltip">
         <i class="fa fa-file-csv"></i>
     </a>
 </div>

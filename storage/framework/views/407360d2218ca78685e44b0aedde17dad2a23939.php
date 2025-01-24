@@ -67,16 +67,17 @@
     </a>
 
     <?php if(Auth::user()->type != 'admin'): ?>
-        <a href="<?php echo e(route('projects.index')); ?>" class="btn btn-square text-sm <?php echo e(request()->is('project*') ? 'active' : ''); ?>">
-            <span class="btn-inner--icon d-block"><i class="fas fa-project-diagram fa-2x"></i></span>
-            <span class="btn-inner--icon d-block pt-2"><?php echo e(__('Tasks')); ?></span>
-        </a>
-        <?php if( Auth::user()->type != 'client'): ?>
+        <?php if(Auth::user()->type != 'owner'): ?>
+            <a href="<?php echo e(route('projects.index')); ?>" class="btn btn-square text-sm <?php echo e(request()->is('project*') ? 'active' : ''); ?>">
+                <span class="btn-inner--icon d-block"><i class="fas fa-project-diagram fa-2x"></i></span>
+                <span class="btn-inner--icon d-block pt-2"><?php echo e(__('Tasks')); ?></span>
+            </a>
             <a href="<?php echo e(route('taskBoard.view')); ?>" class="btn btn-square text-sm <?php echo e(request()->is('taskboard*') ? 'active' : ''); ?>">
                 <span class="btn-inner--icon d-block"><i class="fas fa-tasks fa-2x"></i></span>
                 <span class="btn-inner--icon d-block pt-2"><?php echo e(__('Subtasks')); ?></span>
             </a>
         <?php endif; ?>
+
         <?php if(Auth::user()->type != 'client'): ?>
             <a href="<?php echo e(route('users')); ?>" class="btn btn-square text-sm <?php echo e(request()->is('users*') ? 'active' : ''); ?>">
                 <span class="btn-inner--icon d-block"><i class="fas fa-users fa-2x"></i></span>
@@ -121,19 +122,19 @@
         <?php endif; ?> -->
 
 
-        <?php if(Auth::user()->type != 'admin'): ?>
+        <?php if(Auth::user()->type != 'owner'): ?>
             <a href="<?php echo e(route('report_project.index')); ?>" class="btn btn-square text-sm  <?php echo e(request()->is('report_project*') ? 'active' : ''); ?>">
                 <span class="btn-inner--icon d-block"><i class="fas fa-chart-line fa-2x"></i></span>
                 <span class="btn-inner--icon d-block pt-2"><?php echo e(__('Task Report')); ?></span>
             </a>
         <?php endif; ?>
 
-        <?php if( Auth::user()->type != 'client'): ?>
+        <!-- <?php if( Auth::user()->type != 'client'): ?>
             <a href="<?php echo e(route('notification-templates.index')); ?>" class="btn btn-square text-sm <?php echo e(request()->is('notification-templates*') ? 'active' : ''); ?>">
                 <span class="btn-inner--icon d-block"><i class="fas fa-bell fa-2x"></i></span>
                 <span class="btn-inner--icon d-block pt-2"><?php echo e(__('Notification')); ?></span>
             </a>
-        <?php endif; ?>
+        <?php endif; ?> -->
 
         <!-- <a href="<?php echo e(route('zoommeeting.index')); ?>" class="btn btn-square text-sm <?php echo e(request()->is('zoommeeting*') ? 'active' : ''); ?>">
             <span class="btn-inner--icon d-block"><i class="fas fa-video fa-2x"></i></span>

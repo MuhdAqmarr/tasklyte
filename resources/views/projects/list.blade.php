@@ -9,9 +9,9 @@ $profile = Utility::get_file('/avatars');
             <table class="table align-items-center">
                 <thead>
                 <tr>
-                    <th scope="col" class="sort" data-sort="name">{{__('Project')}}</th>
+                    <th scope="col" class="sort" data-sort="name">{{__('Tasks')}}</th>
                     <th scope="col" class="sort" data-sort="status">{{__('Status')}}</th>
-                    <th scope="col">{{__('Users')}}</th>
+                    <th scope="col">{{__('Members')}}</th>
                     <th scope="col" class="sort" data-sort="completion">{{__('Completion')}}</th>
                     <th scope="col"></th>
                 </tr>
@@ -123,7 +123,7 @@ $profile = Utility::get_file('/avatars');
                     @endforeach
                 @else
                     <tr>
-                        <th scope="col" colspan="7"><h6 class="text-center">{{__('No Projects Found.')}}</h6></th>
+                        <th scope="col" colspan="7"><h6 class="text-center">{{__('No Tasks Found.')}}</h6></th>
                     </tr>
                 @endif
                 </tbody>

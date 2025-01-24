@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    {{ __('Project Report') }}
+    {{ __('Task Report') }}
 @endsection
 @section('action-button')
     <div class="d-flex align-items-center justify-content-end mt-2 mt-md-0 filter">
@@ -73,12 +73,12 @@
                             <tr>
 
                                 <th scope="col" class="sort"> {{ __('#') }}</th>
-                                <th scope="col" class="sort"> {{ __('Project Name') }}</th>
+                                <th scope="col" class="sort"> {{ __('Task Name') }}</th>
                                 <th scope="col" class="sort"> {{ __('Start Date') }}</th>
                                 <th scope="col" class="sort"> {{ __('Due Date') }}</th>
-                                <th scope="col" class="sort"> {{ __('Project Member') }}</th>
+                                <th scope="col" class="sort"> {{ __('Task Member') }}</th>
                                 <th scope="col" class="sort"> {{ __('Progress') }}</th>
-                                <th scope="col" class="sort">{{ __('Project Status') }}</th>
+                                <th scope="col" class="sort">{{ __('Task Status') }}</th>
                                 <th scope="col" class="sort">{{ __('Action') }}</th>
                             </tr>
                         </thead>

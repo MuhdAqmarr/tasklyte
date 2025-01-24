@@ -73,16 +73,17 @@
     </a>
 
     @if(Auth::user()->type != 'admin')
-        <a href="{{ route('projects.index') }}" class="btn btn-square text-sm {{ request()->is('project*') ? 'active' : '' }}">
-            <span class="btn-inner--icon d-block"><i class="fas fa-project-diagram fa-2x"></i></span>
-            <span class="btn-inner--icon d-block pt-2">{{__('Tasks')}}</span>
-        </a>
-        @if ( Auth::user()->type != 'client')
+        @if (Auth::user()->type != 'owner')
+            <a href="{{ route('projects.index') }}" class="btn btn-square text-sm {{ request()->is('project*') ? 'active' : '' }}">
+                <span class="btn-inner--icon d-block"><i class="fas fa-project-diagram fa-2x"></i></span>
+                <span class="btn-inner--icon d-block pt-2">{{__('Tasks')}}</span>
+            </a>
             <a href="{{ route('taskBoard.view') }}" class="btn btn-square text-sm {{ request()->is('taskboard*') ? 'active' : '' }}">
                 <span class="btn-inner--icon d-block"><i class="fas fa-tasks fa-2x"></i></span>
                 <span class="btn-inner--icon d-block pt-2">{{__('Subtasks')}}</span>
             </a>
         @endif
+
         @if (Auth::user()->type != 'client')
             <a href="{{ route('users') }}" class="btn btn-square text-sm {{ request()->is('users*') ? 'active' : '' }}">
                 <span class="btn-inner--icon d-block"><i class="fas fa-users fa-2x"></i></span>
@@ -127,19 +128,19 @@
         @endif -->
 
 
-        @if(Auth::user()->type != 'admin')
+        @if(Auth::user()->type != 'owner')
             <a href="{{ route('report_project.index') }}" class="btn btn-square text-sm  {{ request()->is('report_project*') ? 'active' : '' }}">
                 <span class="btn-inner--icon d-block"><i class="fas fa-chart-line fa-2x"></i></span>
                 <span class="btn-inner--icon d-block pt-2">{{__('Task Report')}}</span>
             </a>
         @endif
 
-        @if ( Auth::user()->type != 'client')
+        <!-- @if ( Auth::user()->type != 'client')
             <a href="{{ route('notification-templates.index') }}" class="btn btn-square text-sm {{ request()->is('notification-templates*') ? 'active' : '' }}">
                 <span class="btn-inner--icon d-block"><i class="fas fa-bell fa-2x"></i></span>
                 <span class="btn-inner--icon d-block pt-2">{{__('Notification')}}</span>
             </a>
-        @endif
+        @endif -->
 
         <!-- <a href="{{ route('zoommeeting.index') }}" class="btn btn-square text-sm {{ request()->is('zoommeeting*') ? 'active' : '' }}">
             <span class="btn-inner--icon d-block"><i class="fas fa-video fa-2x"></i></span>

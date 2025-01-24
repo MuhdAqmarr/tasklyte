@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    {{__('Projects')}}
+    {{__('Tasks')}}
 @endsection
 
 @push('theme-script')
@@ -62,7 +62,7 @@
     </div>
     @if(Auth::user()->type != 'client')
         @if($allow == true)
-            <a href="#" class="btn btn-sm btn-white btn-icon-only rounded-circle ml-2" data-url="{{ route('projects.create') }}" data-ajax-popup="true" data-size="lg" data-title="{{__('Create Project')}}">
+            <a href="#" class="btn btn-sm btn-white btn-icon-only rounded-circle ml-2" data-url="{{ route('projects.create') }}" data-ajax-popup="true" data-size="lg" data-title="{{__('Create Task')}}">
                 <span class="btn-inner--icon"><i class="fas fa-plus"></i></span>
             </a>
         @else
@@ -71,11 +71,11 @@
             </a>
         @endif
     @endif
-    <a href="{{route('project.export')}}" class="btn btn-sm btn-white btn-icon-only rounded-circle ml-2" data-title="{{__('Export Project CSV file')}}" data-toggle="tooltip">
+    <a href="{{route('project.export')}}" class="btn btn-sm btn-white btn-icon-only rounded-circle ml-2" data-title="{{__('Export Task CSV file')}}" data-toggle="tooltip">
         <i class="fa fa-file-excel"></i>
     </a>
 
-    <a href="#" class="btn btn-sm btn-white btn-icon-only rounded-circle" data-url="{{ route('project.file.import') }}" data-ajax-popup="true" data-title="{{__('Import Project CSV file')}}" data-toggle="tooltip">
+    <a href="#" class="btn btn-sm btn-white btn-icon-only rounded-circle" data-url="{{ route('project.file.import') }}" data-ajax-popup="true" data-title="{{__('Import Task CSV file')}}" data-toggle="tooltip">
         <i class="fa fa-file-csv"></i>
     </a>
 </div>

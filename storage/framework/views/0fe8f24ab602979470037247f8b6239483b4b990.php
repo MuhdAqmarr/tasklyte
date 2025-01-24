@@ -6,11 +6,21 @@ $logo_path = \App\Models\Utility::get_file('/');
     <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <?php ($commonData = $user->usrCommonData()); ?>
 
-        <div class="col-lg-3 col-sm-6">
+        <div class="col-lg-4 col-sm-6">
             <div class="card hover-shadow-lg">
                 <div class="card-header border-0 pb-0 pt-2 px-3">
-                    <div class="text-right">
+                    <!-- <div class="text-right">
                         <span class="badge badge-xs badge-<?php echo e($user->usrRole()['color']); ?>"><?php echo e(__($user->usrRole()['role'])); ?></span>
+                    </div> -->
+                    <div class="text-right">
+                        <span class="badge badge-xs badge-<?php echo e($user->usrRole()['color']); ?>">
+                            <?php echo e($user->usrRole()['role'] === 'User' 
+                                    ? 'Team Leader' 
+                                    : ($user->usrRole()['role'] === 'Client' 
+                                        ? 'Team Member' 
+                                        : __($user->usrRole()['role']))); ?>
+
+                        </span>
                     </div>
                 </div>
                 <div class="card-body text-center">
@@ -65,17 +75,17 @@ $logo_path = \App\Models\Utility::get_file('/');
                         </div>
                         <div class="col-auto text-center">
                             <span class="d-block h4 mb-0"><?php echo e($commonData['open_task']); ?></span>
-                            <span class="d-block text-sm text-muted"><?php echo e(__('Open tasks')); ?></span>
+                            <span class="d-block text-sm text-muted"><?php echo e(__('Open Subtasks')); ?></span>
                         </div>
                     </div>
                 </div>
                 <div class="card-footer">
                     <div class="actions d-flex justify-content-between">
-                        <a href="#" data-url="<?php echo e(route('user.info.popup',[$user->id,'project'])); ?>" data-ajax-popup="true" data-size="md" data-title="<?php echo e($user->name.__("'s Projects")); ?>" class="action-item">
-                            <span class="btn-inner--icon"><?php echo e(__('Projects')); ?></span>
+                        <a href="#" data-url="<?php echo e(route('user.info.popup',[$user->id,'project'])); ?>" data-ajax-popup="true" data-size="md" data-title="<?php echo e($user->name.__("'s Tasks")); ?>" class="action-item">
+                            <span class="btn-inner--icon"><?php echo e(__('Tasks')); ?></span>
                         </a>
-                        <a href="#" data-url="<?php echo e(route('user.info.popup',[$user->id,'due_task'])); ?>" data-ajax-popup="true" data-size="md" data-title="<?php echo e($user->name.__("'s Top Due Tasks")); ?>" class="action-item">
-                            <span class="btn-inner--icon"><?php echo e(__('Due Tasks')); ?></span>
+                        <a href="#" data-url="<?php echo e(route('user.info.popup',[$user->id,'due_task'])); ?>" data-ajax-popup="true" data-size="md" data-title="<?php echo e($user->name.__("'s Top Due Subtasks")); ?>" class="action-item">
+                            <span class="btn-inner--icon"><?php echo e(__('Due Subtasks')); ?></span>
                         </a>
                     </div>
                 </div>

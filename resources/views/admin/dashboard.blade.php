@@ -123,7 +123,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h6 class="text-muted mb-1">{{__('Total Users')}}</h6>
+                                <h6 class="text-muted mb-1">{{__('Total Members')}}</h6>
                                 <span class="h3 font-weight-bold mb-0 ">{{ $home_data['total_user'] }}</span>
                             </div>
                         </div>
@@ -173,86 +173,77 @@
                     </div>
                 </div>
             </div>
-            @if (Auth::user()->type != 'client')
+            
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                     <div class="card card-fluid">
                         <div class="card-header">
-                            <h6 class="mb-0">{{ __('Storage Status') }} <small>({{ $users->storage_limit . 'MB' }} /
-                                    {{ $user_plan->storage_limit . 'MB' }})</small></h6>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-0">{{ __('Top Due Tasks') }}</h6>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body" style="height: 295px !important;">
-                            <div id="device-chart" class="d-flex justify-content-center"></div>
+                        <div class="card-wrapper table_scroll p-3  min-h-430 mh-430">
+                            <div class="table-responsive" style="position: relative;">
+
+                                <div class="list-group list-group-flush">
+                                    @if ($home_data['due_project']->count() > 0)
+                                        @foreach ($home_data['due_project'] as $due_project)
+                                            <a href="{{ route('projects.show', $due_project) }}"
+                                                class="list-group-item list-group-item-action">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <div>
+                                                        <img {{ $due_project->img_image }} class="avatar rounded-circle" />
+                                                    </div>
+                                                    <div class="flex-fill pl-3 text-limit">
+                                                        <div class="row">
+                                                            <div class="col-9">
+                                                                <h6 class="progress-text mb-1 text-sm d-block text-limit">
+                                                                    {{ $due_project->title }}</h6>
+                                                            </div>
+                                                            <div class="col-3 text-right">
+                                                                <span
+                                                                    class="badge badge-xs badge-{{ \Auth::user()->checkProject($due_project->id) == 'Owner' ? 'success' : 'warning' }}">{{ __(\Auth::user()->checkProject($due_project->id)) }}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="progress progress-xs mb-0">
+                                                            <div class="progress-bar bg-{{ $due_project->project_progress()['color'] }}"
+                                                                role="progressbar"
+                                                                style="width: {{ $due_project->project_progress()['percentage'] }};"
+                                                                aria-valuenow="{{ $due_project->project_progress()['percentage'] }}"
+                                                                aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                        <div
+                                                            class="d-flex justify-content-between text-xs text-muted text-right mt-1">
+                                                            <div>
+                                                                <span
+                                                                    class="font-weight-bold text-{{ \App\Models\Project::$status_color[$due_project->status] }}">{{ __(\App\Models\Project::$status[$due_project->status]) }}</span>
+                                                            </div>
+                                                            <div>
+                                                                {{ $due_project->countTask(Auth::user()->id) }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        @endforeach
+                                    @else
+                                        <div class="py-5">
+                                            <h6 class="text-center mb-0">{{ __('No Due Tasks Found.') }}</h6>
+                                        </div>
+                                    @endif
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            @endif
         @if (Auth::user()->type != 'client')
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         @else
-            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         @endif
-        <div class="card">
-            <div class="card-header">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h6 class="mb-0">{{ __('Top Due Tasks') }}</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="card-wrapper table_scroll p-3  min-h-430 mh-430">
-                <div class="table-responsive" style="position: relative;">
-
-                    <div class="list-group list-group-flush">
-                        @if ($home_data['due_project']->count() > 0)
-                            @foreach ($home_data['due_project'] as $due_project)
-                                <a href="{{ route('projects.show', $due_project) }}"
-                                    class="list-group-item list-group-item-action">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <img {{ $due_project->img_image }} class="avatar rounded-circle" />
-                                        </div>
-                                        <div class="flex-fill pl-3 text-limit">
-                                            <div class="row">
-                                                <div class="col-9">
-                                                    <h6 class="progress-text mb-1 text-sm d-block text-limit">
-                                                        {{ $due_project->title }}</h6>
-                                                </div>
-                                                <div class="col-3 text-right">
-                                                    <span
-                                                        class="badge badge-xs badge-{{ \Auth::user()->checkProject($due_project->id) == 'Owner' ? 'success' : 'warning' }}">{{ __(\Auth::user()->checkProject($due_project->id)) }}</span>
-                                                </div>
-                                            </div>
-                                            <div class="progress progress-xs mb-0">
-                                                <div class="progress-bar bg-{{ $due_project->project_progress()['color'] }}"
-                                                    role="progressbar"
-                                                    style="width: {{ $due_project->project_progress()['percentage'] }};"
-                                                    aria-valuenow="{{ $due_project->project_progress()['percentage'] }}"
-                                                    aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                            <div
-                                                class="d-flex justify-content-between text-xs text-muted text-right mt-1">
-                                                <div>
-                                                    <span
-                                                        class="font-weight-bold text-{{ \App\Models\Project::$status_color[$due_project->status] }}">{{ __(\App\Models\Project::$status[$due_project->status]) }}</span>
-                                                </div>
-                                                <div>
-                                                    {{ $due_project->countTask(Auth::user()->id) }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            @endforeach
-                        @else
-                            <div class="py-5">
-                                <h6 class="text-center mb-0">{{ __('No Due Tasks Found.') }}</h6>
-                            </div>
-                        @endif
-                    </div>
-
-                </div>
-            </div>
-        </div>
+        
         <!-- <div class="row">
             <div class="col-12">
                 <div class="card card-fluid">

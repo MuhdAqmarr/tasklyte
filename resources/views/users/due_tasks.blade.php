@@ -19,7 +19,7 @@
                 @endforeach
             @else
                 <div class="py-5">
-                    <h6 class="h6 text-center">{{__('No Tasks Found.')}}</h6>
+                    <h6 class="h6 text-center">{{__('No Subtasks Found.')}}</h6>
                 </div>
             @endif
         </div>

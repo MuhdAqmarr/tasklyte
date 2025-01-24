@@ -21,13 +21,13 @@
     <div class="col-md-12 d-flex align-items-center gap-2 flex-wrap justify-content-md-end">
         @if (isset($permissions) && in_array('project setting', $permissions))
             <a href="{{ route('projects.edit', $project) }}" class="btn btn-sm btn-white rounded-circle btn-icon-only ml-0"
-            data-toggle="tooltip" data-original-title="{{ __('Project Settings') }}">
+            data-toggle="tooltip" data-original-title="{{ __('Task Settings') }}">
                 <span class="btn-inner--icon"><i class="fas fa-cog"></i></span>
             </a>
         @endif
 
         <a href="{{ route('projects.tasks.index', $project->id) }}" class="btn btn-sm bg-white btn-icon rounded-pill ml-0">
-            <span class="btn-inner--text text-dark">{{ __('Tasks') }}</span>
+            <span class="btn-inner--text text-dark">{{ __('Subtasks') }}</span>
         </a>
 
         <a href="{{ route('timesheet.index', $project->id) }}" class="btn btn-sm bg-white btn-icon rounded-pill ml-0">
@@ -39,12 +39,12 @@
         <a href="{{ route('projects.gantt', $project->id) }}" class="btn btn-sm bg-white btn-icon rounded-pill">
             <span class="btn-inner--text text-dark">{{ __('Gantt Chart') }}</span>
         </a>
-        @if (isset($permissions) && (in_array('show expense', $permissions) || in_array('create expense', $permissions)))
+        <!-- @if (isset($permissions) && (in_array('show expense', $permissions) || in_array('create expense', $permissions)))
             <a href="{{ route('projects.expenses.index', $project->id) }}"
                 class="btn btn-sm bg-white btn-icon rounded-pill ml-0">
                 <span class="btn-inner--text text-dark">{{ __('Expense') }}</span>
             </a>
-        @endif
+        @endif -->
     </div>
 @endsection
 
@@ -60,7 +60,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h6 class="text-muted mb-1">{{ __('Task Done') }}</h6>
+                                <h6 class="text-muted mb-1">{{ __('Subtask Done') }}</h6>
                                 <span class="h4 font-weight-bold mb-0 ">{{ $project_data['task']['done'] }}</span>
                             </div>
                             <div class="col-auto">
@@ -72,7 +72,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <span
-                                    class="text-sm text-muted">{{ __('Total Task') . ' : ' . $project_data['task']['total'] }}</span>
+                                    class="text-sm text-muted">{{ __('Total Subtask') . ' : ' . $project_data['task']['total'] }}</span>
                             </div>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <h6 class="mb-0">{{ $project_data['task_chart']['total'] }}</h6>
-                                    <span class="text-sm text-muted">{{ __('Last 7 days task done') }}</span>
+                                    <span class="text-sm text-muted">{{ __('Last 7 days subtask done') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
                             </div>
                         </div>
                         <div class="progress-wrapper">
-                            <small class="progress-label">{{ __('Open Task') }} <span
+                            <small class="progress-label">{{ __('Open Subtask') }} <span
                                     class="text-muted">{{ $project_data['open_task']['tasks'] }}</span></small>
                             <div class="progress mt-0 height-3">
                                 <div class="progress-bar bg-info" role="progressbar"
@@ -126,7 +126,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-sm-6">
-                <div class="card card-stats">
+                <!-- <div class="card card-stats">
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
@@ -147,7 +147,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -161,7 +161,7 @@
                                 data-dataset="{{ json_encode($project_data['timesheet_chart']['chart']) }}"></div>
                         </div>
                         <div class="progress-wrapper mb-3">
-                            <small class="progress-label">{{ __('Total project time spent') }} <span
+                            <small class="progress-label">{{ __('Total task time spent') }} <span
                                     class="text-muted">{{ $project_data['time_spent']['total'] }}</span></small>
                             <div class="progress mt-0 height-3">
                                 <div class="progress-bar bg-warning" role="progressbar"
@@ -171,7 +171,7 @@
                             </div>
                         </div>
                         <div class="progress-wrapper">
-                            <small class="progress-label">{{ __('Allocated hours on task') }} <span
+                            <small class="progress-label">{{ __('Allocated hours on subtask') }} <span
                                     class="text-muted">{{ $project_data['task_allocated_hrs']['hrs'] }}</span></small>
                             <div class="progress mt-0 height-3">
                                 <div class="progress-bar bg-warning" role="progressbar"
@@ -189,7 +189,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h6 class="text-muted mb-1">{{ __('Task Done') }}</h6>
+                                <h6 class="text-muted mb-1">{{ __('Subtask Done') }}</h6>
                                 <span class="h4 font-weight-bold mb-0 ">{{ $project_data['task']['done'] }}</span>
                             </div>
                             <div class="col-auto">
@@ -201,7 +201,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <span
-                                    class="text-sm text-muted">{{ __('Total Task') . ' : ' . $project_data['task']['total'] }}</span>
+                                    class="text-sm text-muted">{{ __('Total Subtask') . ' : ' . $project_data['task']['total'] }}</span>
                             </div>
                         </div>
                     </div>
@@ -213,7 +213,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <h6 class="mb-0">{{ $project_data['task_chart']['total'] }}</h6>
-                                    <span class="text-sm text-muted">{{ __('Last 7 days task done') }}</span>
+                                    <span class="text-sm text-muted">{{ __('Last 7 days subtask done') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -232,7 +232,7 @@
                             </div>
                         </div>
                         <div class="progress-wrapper">
-                            <small class="progress-label">{{ __('Open Task') }} <span
+                            <small class="progress-label">{{ __('Open Subtask') }} <span
                                     class="text-muted">{{ $project_data['open_task']['tasks'] }}</span></small>
                             <div class="progress mt-0 height-3">
                                 <div class="progress-bar bg-info" role="progressbar"
@@ -256,7 +256,7 @@
             </div>
 
             <div class="col-xl-3 col-sm-6">
-                <div class="card card-stats">
+                <!-- <div class="card card-stats">
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
@@ -277,7 +277,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -291,7 +291,7 @@
                                 data-dataset="{{ json_encode($project_data['timesheet_chart']['chart']) }}"></div>
                         </div>
                         <div class="progress-wrapper mb-3">
-                            <small class="progress-label">{{ __('Total project time spent') }} <span
+                            <small class="progress-label">{{ __('Total task time spent') }} <span
                                     class="text-muted">{{ $project_data['time_spent']['total'] }}</span></small>
                             <div class="progress mt-0 height-3">
                                 <div class="progress-bar bg-warning" role="progressbar"
@@ -301,7 +301,7 @@
                             </div>
                         </div>
                         <div class="progress-wrapper">
-                            <small class="progress-label">{{ __('Allocated hours on task') }} <span
+                            <small class="progress-label">{{ __('Allocated hours') }} <span
                                     class="text-muted">{{ $project_data['task_allocated_hrs']['hrs'] }}</span></small>
                             <div class="progress mt-0 height-3">
                                 <div class="progress-bar bg-warning" role="progressbar"
@@ -331,7 +331,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <h6 class="mb-0">{{ $project_data['task_chart']['total'] }}</h6>
-                                    <span class="text-sm text-muted">{{ __('Last 7 days task done') }}</span>
+                                    <span class="text-sm text-muted">{{ __('Last 7 days subtask done') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -350,7 +350,7 @@
                             </div>
                         </div>
                         <div class="progress-wrapper">
-                            <small class="progress-label">{{ __('Open Task') }} <span
+                            <small class="progress-label">{{ __('Open Subtask') }} <span
                                     class="text-muted">{{ $project_data['open_task']['tasks'] }}</span></small>
                             <div class="progress mt-0 height-3">
                                 <div class="progress-bar bg-info" role="progressbar"
@@ -386,7 +386,7 @@
                                 data-dataset="{{ json_encode($project_data['timesheet_chart']['chart']) }}"></div>
                         </div>
                         <div class="progress-wrapper mb-3">
-                            <small class="progress-label">{{ __('Total project time spent') }} <span
+                            <small class="progress-label">{{ __('Total task time spent') }} <span
                                     class="text-muted">{{ $project_data['time_spent']['total'] }}</span></small>
                             <div class="progress mt-0 height-3">
                                 <div class="progress-bar bg-warning" role="progressbar"
@@ -404,7 +404,7 @@
         <div class="col-sm-6">
             <div class="card card-fluid">
                 <div class="card-header">
-                    <h6 class="mb-0">{{ __('Project overview') }}</h6>
+                    <h6 class="mb-0">{{ __('Task overview') }}</h6>
                 </div>
                 <div class="card-body py-3 flex-grow-1">
                     <div class="pb-3 mb-3 border-bottom">
@@ -534,7 +534,7 @@
                                             <h6 class="text-sm d-block text-limit mb-0">{{ $milestone->title }}
                                                 <span
                                                     class=" mx-3 badge badge-pill badge-{{ \App\Models\Project::$status_color[$milestone->status] }}">{{ __(\App\Models\Project::$status[$milestone->status]) }}
-                                                </span>{{ $milestone->tasks->count() . ' ' . __('Tasks') }}
+                                                </span>{{ $milestone->tasks->count() . ' ' . __('Subtasks') }}
                                             </h6>
                                             <span class="d-block text-sm text-muted mt-2">
 
@@ -612,9 +612,9 @@
                         <div>
                             <h6 class="mb-0">{{ __('Attachments') }}</h6>
                             @if (\Auth::user()->checkProject($project->id) == 'Owner')
-                                <small>{{ __('Attachment that uploaded in this project') }}</small>
+                                <small>{{ __('Attachment that uploaded in this task') }}</small>
                             @else
-                                <small>{{ __('Attachment that uploaded in your assigned tasks') }}</small>
+                                <small>{{ __('Attachment that uploaded in your assigned subtasks') }}</small>
                             @endif
                         </div>
                     </div>
@@ -673,9 +673,9 @@
                             <div>
                                 <h6 class="mb-0">{{ __('Activity Log') }}</h6>
                                 @if (\Auth::user()->checkProject($project->id) == 'Owner')
-                                    <small>{{ __('Activity Log of this project') }}</small>
+                                    <small>{{ __('Activity Log of this task') }}</small>
                                 @else
-                                    <small>{{ __('Activity Log of your assigned tasks') }}</small>
+                                    <small>{{ __('Activity Log of your assigned subtasks') }}</small>
                                 @endif
                             </div>
                         </div>

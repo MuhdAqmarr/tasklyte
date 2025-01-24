@@ -90,7 +90,7 @@
             @endforeach
         @else
             <div class="col-md-12">
-                <h6 class="text-center m-3">{{ __('No tasks found') }}</h6>
+                <h6 class="text-center m-3">{{ __('No subtasks found') }}</h6>
             </div>
         @endif
     </div>

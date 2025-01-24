@@ -24,10 +24,10 @@
         <label class="form-control-label">{{__('Role')}}</label> <br>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <label class="btn btn-primary btn-sm active">
-                <input type="radio" name="user_type" id="radio_user" autocomplete="off" value="user" checked>{{__('User')}}
+                <input type="radio" name="user_type" id="radio_user" autocomplete="off" value="user" checked>{{__('Team Lead')}}
             </label>
             <label class="btn btn-primary btn-sm">
-                <input type="radio" name="user_type" id="radio_client" autocomplete="off" value="client">{{__('Client')}}
+                <input type="radio" name="user_type" id="radio_client" autocomplete="off" value="client">{{__('Team Member')}}
             </label>
         </div>
     </div>

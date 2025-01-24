@@ -22,8 +22,8 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-steady" id="user_sort">
             <a class="dropdown-item active" href="#" data-val="all"><?php echo e(__('Show All')); ?></a>
-            <a class="dropdown-item" href="#" data-val="user"><?php echo e(__('Users')); ?></a>
-            <a class="dropdown-item" href="#" data-val="client"><?php echo e(__('Clients')); ?></a>
+            <a class="dropdown-item" href="#" data-val="user"><?php echo e(__('Team Lead')); ?></a>
+            <a class="dropdown-item" href="#" data-val="client"><?php echo e(__('Team Member')); ?></a>
         </div>
     </div>
     <?php if($allow == true): ?>

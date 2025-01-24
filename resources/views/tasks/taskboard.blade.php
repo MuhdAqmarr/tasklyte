@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    {{__('Tasks')}}
+    {{__('Subtasks')}}
 @endsection
 
 @section('action-button')

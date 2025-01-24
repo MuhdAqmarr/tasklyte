@@ -14,7 +14,7 @@
 
         <div class="col-12 col-md-12">
             <div class="form-group">
-                <?php echo e(Form::label('title', __('Project name'), ['class' => 'form-control-label'])); ?>
+                <?php echo e(Form::label('title', __('Task name'), ['class' => 'form-control-label'])); ?>
 
                 <?php echo e(Form::text('title', null, ['class' => 'form-control', 'required' => 'required'])); ?>
 
@@ -39,7 +39,7 @@
         </div>
         <div class="col-12 col-md-12">
             <div class="form-group">
-                <?php echo e(Form::label('image', __('Project Image'), ['class' => 'form-control-label'])); ?>
+                <?php echo e(Form::label('image', __('Task Image'), ['class' => 'form-control-label'])); ?>
 
                 <input type="file" name="image" id="image" class="custom-input-file" accept="image/*"
                     data-filename="edit-product-image"
@@ -54,7 +54,7 @@
 
             </div>
         </div>
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-12">
             <div class="form-group">
                 <?php echo e(Form::label('estimated_hrs', __('Estimated Hours'), ['class' => 'form-control-label'])); ?>
 
@@ -62,7 +62,7 @@
 
             </div>
         </div>
-        <div class="col-12 col-md-4">
+        <!-- <div class="col-12 col-md-4">
             <div class="form-group">
                 <?php echo e(Form::label('budget', __('Budget'), ['class' => 'form-control-label'])); ?>
 
@@ -82,7 +82,7 @@
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
             </div>
-        </div>
+        </div> -->
         <div class="col-12 col-md-12">
             <div class="form-group">
                 <?php echo e(Form::label('descriptions', __('Description'), ['class' => 'form-control-label'])); ?>
@@ -93,7 +93,7 @@
 
             </div>
         </div>
-        <div class="col-12 col-md-12">
+        <!-- <div class="col-12 col-md-12">
             <div class="form-group">
                 <?php echo e(Form::label('tags', __('Tags'), ['class' => 'form-control-label'])); ?>
 
@@ -101,7 +101,7 @@
                 <?php echo e(Form::text('tags', null, ['class' => 'form-control', 'data-toggle' => 'tags', 'placeholder' => __('Type here..')])); ?>
 
             </div>
-        </div>
+        </div> -->
     </div>
 
 <div class="text-right">

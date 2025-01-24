@@ -41,7 +41,7 @@ $password = base64_decode($project->password);
                             <i class="fas fa-coins pt-1"></i>
                             <div class="media-body ml-3">
                                 <a href="#" class="stretched-link h6 mb-1">{{__('Additional Setting')}}</a>
-                                <p class="mb-0 text-sm">{{__('Likes budget, hours and currency.')}}</p>
+                                <p class="mb-0 text-sm">{{__('Likes estimated hours.')}}</p>
                             </div>
                         </div>
                     </div>
@@ -49,8 +49,8 @@ $password = base64_decode($project->password);
                         <div class="media">
                             <i class="fas fa-tasks pt-1"></i>
                             <div class="media-body ml-3">
-                                <a href="#" class="stretched-link h6 mb-1">{{__('Task Stage')}}</a>
-                                <p class="mb-0 text-sm">{{__('System will consider last stage as a completed / done task for get progress on project.')}}</p>
+                                <a href="#" class="stretched-link h6 mb-1">{{__('Subtask Stage')}}</a>
+                                <p class="mb-0 text-sm">{{__('System will consider last stage as a completed / done subtask for get progress on task.')}}</p>
                             </div>
                         </div>
                     </div>
@@ -67,8 +67,8 @@ $password = base64_decode($project->password);
                         <div class="media">
                             <i class="fas fa-copy pt-1"></i>
                             <div class="media-body ml-3">
-                                <a href="#" class="stretched-link h6 mb-1">{{__('Shared Project Settings')}}</a>
-                                <p class="mb-0 text-sm">{{__('Shared Project Settings.')}}</p>
+                                <a href="#" class="stretched-link h6 mb-1">{{__('Shared Task Settings')}}</a>
+                                <p class="mb-0 text-sm">{{__('Shared Task Settings.')}}</p>
                             </div>
                         </div>
                     </div>
@@ -98,7 +98,7 @@ $password = base64_decode($project->password);
                         <div class="row">
                             <div class="col-12 col-md-12">
                                 <div class="form-group">
-                                    {{ Form::label('title', __('Project name'),['class' => 'form-control-label']) }}
+                                    {{ Form::label('title', __('Task name'),['class' => 'form-control-label']) }}
                                     {{ Form::text('title', null, ['class' => 'form-control','required'=>'required']) }}
                                 </div>
                             </div>
@@ -134,7 +134,7 @@ $password = base64_decode($project->password);
                                 </div>
                             </div>
                             <div class="col-12 col-md-12">
-                                {{ Form::label('image', __('Project Image'),['class' => 'form-control-label']) }}
+                                {{ Form::label('image', __('Task Image'),['class' => 'form-control-label']) }}
                                 <input type="file" name="image" id="image" class="custom-input-file " accept="image/*" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" />
                                 <label for="image">
                                     <i class="fa fa-upload"></i>
@@ -164,7 +164,7 @@ $password = base64_decode($project->password);
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <h5 class=" h6 mb-0">{{__('Project Progress Calculation')}}</h5>
+                        <h5 class=" h6 mb-0">{{__('Task Progress Calculation')}}</h5>
                     </div>
                     <div class="card-body">
                         {{ Form::model($project, ['route' => ['projects.update', $project->id], 'id' => 'edit_project', 'method' => 'PUT', 'enctype'=>'multipart/form-data']) }}
@@ -194,7 +194,7 @@ $password = base64_decode($project->password);
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <h5 class=" h6 mb-0">{{__('Task Progress Calculation')}}</h5>
+                        <h5 class=" h6 mb-0">{{__('Subtask Progress Calculation')}}</h5>
                     </div>
                     <div class="card-body">
                         {{ Form::model($project, ['route' => ['projects.update', $project->id], 'id' => 'edit_project', 'method' => 'PUT', 'enctype'=>'multipart/form-data']) }}
@@ -238,7 +238,7 @@ $password = base64_decode($project->password);
                     <div class="card-body">
                         {{ Form::model($project, ['route' => ['projects.update', $project->id], 'id' => 'edit_project', 'method' => 'PUT', 'enctype'=>'multipart/form-data']) }}
                         <div class="row">
-                            <div class="col-12 col-md-6">
+                            <!-- <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     {{ Form::label('budget', __('Budget'),['class' => 'form-control-label']) }}
                                     {{ Form::number('budget', null, ['class' => 'form-control','required' => 'required','step' =>'0.01']) }}
@@ -256,8 +256,8 @@ $password = base64_decode($project->password);
                                     {{ Form::text('currency_code', null, ['class' => 'form-control','required' => 'required']) }}
                                     <small>{{__('Note : Add currency code as per three-letter ISO code.')}} <a href="https://stripe.com/docs/currencies" target="_blank">{{__('you can find out here..')}}</a></small>
                                 </div>
-                            </div>
-                            <div class="col-12 col-md-6">
+                            </div> -->
+                            <!-- <div class="col-12 col-md-6">
                                 <label class="currency-label form-control-label pb-2" for="currency_position">{{__('Currency Symbol Position')}}</label> <br>
                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <label class="btn btn-primary btn-sm {{ ($project->currency_position == 'pre') ? 'active' : '' }}">
@@ -267,7 +267,7 @@ $password = base64_decode($project->password);
                                         <input type="radio" name="currency_position" value="post" {{ ($project->currency_position == 'post') ? 'checked' : '' }}>{{ __('Post') }}
                                     </label>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     {{ Form::label('estimated_hrs', __('Estimated Hours'),['class' => 'form-control-label']) }}
@@ -275,13 +275,13 @@ $password = base64_decode($project->password);
                                 </div>
                                 {{ Form::hidden('from','financial') }}
                             </div>
-                            <div class="col-12 col-md-12">
+                            <!-- <div class="col-12 col-md-12">
                                 <div class="form-group">
                                     {{ Form::label('tags', __('Tags'),['class' => 'form-control-label']) }}
                                     <small class="form-text text-muted mb-2 mt-0">{{ __('Seprated By Comma') }}</small>
                                     {{ Form::text('tags', null, ['class' => 'form-control','data-toggle' => 'tags','placeholder'=>__('Type here..')]) }}
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="text-right pt-3">
                             {{ Form::button(__('Save'), ['type' => 'submit','class' => 'btn btn-sm btn-primary rounded-pill']) }}
@@ -337,7 +337,7 @@ $password = base64_decode($project->password);
                     </div>
                 </div>
             </div>
-            <div id="tabs-4" class="tabs-card d-none">
+            <!-- <div id="tabs-4" class="tabs-card d-none">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="h6 mb-0">{{__('Email Notification Settings')}}</h5>
@@ -381,7 +381,7 @@ $password = base64_decode($project->password);
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <div id="tabs-5" class="tabs-card d-none">
                 <div class="card">
@@ -389,7 +389,7 @@ $password = base64_decode($project->password);
                     <div class="card-header">
                         <div class="row">
                             <div class="col-6">
-                        <h5 class="h6 mb-0">{{__('Shared Project Settings')}}</h5>
+                        <h5 class="h6 mb-0">{{__('Shared Task Settings')}}</h5>
                     </div>
 
                         <div class="col-md-6 text-right">
@@ -464,7 +464,7 @@ $password = base64_decode($project->password);
                                     </tr>
 
                                     <tr>
-                                    <td>{{ __('Task')}}</td>
+                                    <td>{{ __('Subtask')}}</td>
                                             <td class="action text-right">
                                                 <div class="custom-control custom-switch">
                                                     <input type="checkbox" name="task" class="custom-control-input" id="copy_link_7" @if(isset($result->task) && $result->task == 'on') checked="checked" @endif  value="on">

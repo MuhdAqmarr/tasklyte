@@ -89,7 +89,7 @@
                     @endforeach
                 @else
                     <tr>
-                        <th scope="col" colspan="7"><h6 class="text-center">{{__('No tasks found')}}</h6></th>
+                        <th scope="col" colspan="7"><h6 class="text-center">{{__('No subtasks found')}}</h6></th>
                     </tr>
                 @endif
                 </tbody>

@@ -46,14 +46,14 @@
         <div class="form-group">
             {{ Form::label('estimated_hrs', __('Estimated Hours'), ['class' => 'form-control-label']) }}
             <small
-                class="form-text text-muted mb-2 mt-0">{{ __('Total hrs of project ') . $hrs['total'] . __(' & allocated total ') . $hrs['allocated'] . __(' hrs in other tasks') }}</small>
+                class="form-text text-muted mb-2 mt-0">{{ __('Total hrs of task ') . $hrs['total'] . __(' & allocated total ') . $hrs['allocated'] . __(' hrs in other subtasks') }}</small>
             {{ Form::number('estimated_hrs', null, ['class' => 'form-control', 'required' => 'required', 'min' => '0', 'maxlength' => '8']) }}
         </div>
     </div>
     <div class="col-6">
         <div class="form-group">
             {{ Form::label('priority', __('Priority'), ['class' => 'form-control-label']) }}
-            <small class="form-text text-muted mb-2 mt-0">{{ __('Set Priority of your task') }}</small>
+            <small class="form-text text-muted mb-2 mt-0">{{ __('Set Priority of your subtask') }}</small>
             <select class="form-control" name="priority" id="priority" required>
                 @foreach (\App\Models\ProjectTask::$priority as $key => $val)
                     <option value="{{ $key }}">{{ __($val) }}</option>
@@ -76,8 +76,8 @@
 </div>
 
 <div class="form-group">
-    <label class="form-control-label">{{ __('Task members') }}</label>
-    <small class="form-text text-muted mb-2 mt-0">{{ __('Below users are assigned in your project.') }}</small>
+    <label class="form-control-label">{{ __('Subtask members') }}</label>
+    <small class="form-text text-muted mb-2 mt-0">{{ __('Below members are assigned in your tasks.') }}</small>
 </div>
 <div class="list-group list-group-flush mb-4">
     <div class="row">

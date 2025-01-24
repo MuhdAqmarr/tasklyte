@@ -23,8 +23,8 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-steady" id="user_sort">
             <a class="dropdown-item active" href="#" data-val="all">{{__('Show All')}}</a>
-            <a class="dropdown-item" href="#" data-val="user">{{__('Users')}}</a>
-            <a class="dropdown-item" href="#" data-val="client">{{__('Clients')}}</a>
+            <a class="dropdown-item" href="#" data-val="user">{{__('Team Lead')}}</a>
+            <a class="dropdown-item" href="#" data-val="client">{{__('Team Member')}}</a>
         </div>
     </div>
     @if($allow == true)

@@ -90,7 +90,7 @@
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 <?php else: ?>
                     <tr>
-                        <th scope="col" colspan="7"><h6 class="text-center"><?php echo e(__('No tasks found')); ?></h6></th>
+                        <th scope="col" colspan="7"><h6 class="text-center"><?php echo e(__('No subtasks found')); ?></h6></th>
                     </tr>
                 <?php endif; ?>
                 </tbody>

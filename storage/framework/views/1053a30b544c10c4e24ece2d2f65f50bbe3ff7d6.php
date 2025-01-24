@@ -1,5 +1,5 @@
 <?php $__env->startSection('title'); ?>
-    <?php echo e(__('Tasks')); ?>
+    <?php echo e(__('Subtasks')); ?>
 
 <?php $__env->stopSection(); ?>
 

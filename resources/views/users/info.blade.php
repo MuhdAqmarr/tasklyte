@@ -37,10 +37,11 @@ $logo_path=\App\Models\Utility::get_file('/');
                             </a>
                         </div>
                         <div class="col ml-md-n2">
-                            <a href="#!" class="d-block h6 mb-0">{{ $user->name }} <span class="badge badge-xs badge-{{$role['color']}} ml-2">{{$role['role']}}</span></a>
+                            <a href="#!" class="d-block h6 mb-0">{{ $user->name }} </a>
                             <small class="d-block text-muted">{{ $user->email }}</small>
                             <small class="d-block text-muted">{{ (!empty($user->phone)) ? $user->phone : ''}}</small>
                         </div>
+                
                         @if(Auth::user()->id == $user->id)
                             <div class="col-auto">
                                 <a href="{{ route('profile') }}">
@@ -143,7 +144,7 @@ $logo_path=\App\Models\Utility::get_file('/');
         @endif
     </div>
     <div class="row">
-        <!-- @if($role['role'] != 'Client')
+        @if($role['role'] != 'Client')
             <div class="col-xl-8 col-md-6">
                 <div class="card card-fluid">
                     <div class="card-header">
@@ -155,7 +156,7 @@ $logo_path=\App\Models\Utility::get_file('/');
                     </div>
                 </div>
             </div>
-        @endif -->
+        @endif
         <div class="col-xl-{{($role['role'] == 'Client') ? '6':'4'}} col-md-6">
             <div class="card">
                 <div class="card-header">

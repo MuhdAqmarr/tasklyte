@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    {{ __('Project Detail') }}
+    {{ __('Task Detail') }}
 @endsection
 
 @section('action-button')
@@ -34,11 +34,11 @@
                                         <table class="table" id="pc-dt-simple">
                                             <tbody>
                                                 <tr class="table_border">
-                                                    <th class="table_border">{{ __('Project Name') }}:</th>
+                                                    <th class="table_border">{{ __('Task Name') }}:</th>
                                                     <td class="table_border">{{ $project->title }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th class="table_border">{{ __('Project Status') }}:</th>
+                                                    <th class="table_border">{{ __('Task Status') }}:</th>
                                                     <td class="table_border">
 
                                                         <span
@@ -121,7 +121,7 @@
                                     <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Refferals"><i
                                             class=""></i></a>
                                 </div>
-                                <h6>{{ __('Task Priority') }}</h6>
+                                <h6>{{ __('Subtask Priority') }}</h6>
                             </div>
                             <div class="card-body" style="height: 285px !important;">
                                 <div class="row align-items-center">
@@ -143,7 +143,7 @@
                                     <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Refferals"><i
                                             class=""></i></a>
                                 </div>
-                                <h6>{{ __('Task Status') }}</h6>
+                                <h6>{{ __('Subtask Status') }}</h6>
                             </div>
                             <div class="card-body" style="height: 285px !important;">
                                 <div class="row align-items-center">
@@ -181,7 +181,7 @@
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-header">
-                                <h6>{{ __('Users') }}</h6>
+                                <h6>{{ __('Members') }}</h6>
                             </div>
                             <div class="card-body table-border-style ">
                                 <div class="table-responsive"
@@ -190,8 +190,8 @@
                                         <thead>
                                             <tr>
                                                 <th>{{ __('Name') }}</th>
-                                                <th>{{ __('Assigned Tasks') }}</th>
-                                                <th>{{ __('Done Tasks') }}</th>
+                                                <th>{{ __('Assigned Subtasks') }}</th>
+                                                <th>{{ __('Done Subtasks') }}</th>
                                                 <th>{{ __('Logged Hour') }}</th>
 
 
@@ -315,7 +315,7 @@
                 <div class="mt-3 mb-3 row d-flex align-items-center justify-content-end ml-2 col-12" id="show_filter">
                     <div class="col-auto ">
                         <select class="form-control form-control-sm w-auto" name="all_users" id="all_users">
-                            <option value="" class="px-4">{{ __('All Users') }}</option>
+                            <option value="" class="px-4">{{ __('All Members') }}</option>
                             @foreach ($users as $user)
                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
                             @endforeach
@@ -362,7 +362,7 @@
                     <div class="card">
 
                         <div class="card-header">
-                            <h6>{{ __('Tasks') }}</h6>
+                            <h6>{{ __('Subtasks') }}</h6>
                         </div>
                         <div class="card-body mx-2">
                             <div class="row">
@@ -371,7 +371,7 @@
                                     style="height: 320px !important; overflow: auto !important;">
                                     <table class="table" id="tasks-selection-datatable">
                                         <thead>
-                                            <th>{{ __('Task Name') }}</th>
+                                            <th>{{ __('Subtasks Name') }}</th>
                                             <th>{{ __('Milestone') }}</th>
                                             <th>{{ __('Start Date') }}</th>
                                             <th>{{ __('Due Date') }}</th>

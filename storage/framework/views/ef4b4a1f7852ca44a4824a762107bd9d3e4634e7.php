@@ -127,7 +127,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h6 class="text-muted mb-1"><?php echo e(__('Total Users')); ?></h6>
+                                <h6 class="text-muted mb-1"><?php echo e(__('Total Members')); ?></h6>
                                 <span class="h3 font-weight-bold mb-0 "><?php echo e($home_data['total_user']); ?></span>
                             </div>
                         </div>
@@ -178,87 +178,78 @@
                     </div>
                 </div>
             </div>
-            <?php if(Auth::user()->type != 'client'): ?>
+            
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                     <div class="card card-fluid">
                         <div class="card-header">
-                            <h6 class="mb-0"><?php echo e(__('Storage Status')); ?> <small>(<?php echo e($users->storage_limit . 'MB'); ?> /
-                                    <?php echo e($user_plan->storage_limit . 'MB'); ?>)</small></h6>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-0"><?php echo e(__('Top Due Tasks')); ?></h6>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body" style="height: 295px !important;">
-                            <div id="device-chart" class="d-flex justify-content-center"></div>
+                        <div class="card-wrapper table_scroll p-3  min-h-430 mh-430">
+                            <div class="table-responsive" style="position: relative;">
+
+                                <div class="list-group list-group-flush">
+                                    <?php if($home_data['due_project']->count() > 0): ?>
+                                        <?php $__currentLoopData = $home_data['due_project']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $due_project): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <a href="<?php echo e(route('projects.show', $due_project)); ?>"
+                                                class="list-group-item list-group-item-action">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <div>
+                                                        <img <?php echo e($due_project->img_image); ?> class="avatar rounded-circle" />
+                                                    </div>
+                                                    <div class="flex-fill pl-3 text-limit">
+                                                        <div class="row">
+                                                            <div class="col-9">
+                                                                <h6 class="progress-text mb-1 text-sm d-block text-limit">
+                                                                    <?php echo e($due_project->title); ?></h6>
+                                                            </div>
+                                                            <div class="col-3 text-right">
+                                                                <span
+                                                                    class="badge badge-xs badge-<?php echo e(\Auth::user()->checkProject($due_project->id) == 'Owner' ? 'success' : 'warning'); ?>"><?php echo e(__(\Auth::user()->checkProject($due_project->id))); ?></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="progress progress-xs mb-0">
+                                                            <div class="progress-bar bg-<?php echo e($due_project->project_progress()['color']); ?>"
+                                                                role="progressbar"
+                                                                style="width: <?php echo e($due_project->project_progress()['percentage']); ?>;"
+                                                                aria-valuenow="<?php echo e($due_project->project_progress()['percentage']); ?>"
+                                                                aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                        <div
+                                                            class="d-flex justify-content-between text-xs text-muted text-right mt-1">
+                                                            <div>
+                                                                <span
+                                                                    class="font-weight-bold text-<?php echo e(\App\Models\Project::$status_color[$due_project->status]); ?>"><?php echo e(__(\App\Models\Project::$status[$due_project->status])); ?></span>
+                                                            </div>
+                                                            <div>
+                                                                <?php echo e($due_project->countTask(Auth::user()->id)); ?>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <?php else: ?>
+                                        <div class="py-5">
+                                            <h6 class="text-center mb-0"><?php echo e(__('No Due Tasks Found.')); ?></h6>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            <?php endif; ?>
         <?php if(Auth::user()->type != 'client'): ?>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <?php else: ?>
-            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <?php endif; ?>
-        <div class="card">
-            <div class="card-header">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h6 class="mb-0"><?php echo e(__('Top Due Tasks')); ?></h6>
-                    </div>
-                </div>
-            </div>
-            <div class="card-wrapper table_scroll p-3  min-h-430 mh-430">
-                <div class="table-responsive" style="position: relative;">
-
-                    <div class="list-group list-group-flush">
-                        <?php if($home_data['due_project']->count() > 0): ?>
-                            <?php $__currentLoopData = $home_data['due_project']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $due_project): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <a href="<?php echo e(route('projects.show', $due_project)); ?>"
-                                    class="list-group-item list-group-item-action">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <img <?php echo e($due_project->img_image); ?> class="avatar rounded-circle" />
-                                        </div>
-                                        <div class="flex-fill pl-3 text-limit">
-                                            <div class="row">
-                                                <div class="col-9">
-                                                    <h6 class="progress-text mb-1 text-sm d-block text-limit">
-                                                        <?php echo e($due_project->title); ?></h6>
-                                                </div>
-                                                <div class="col-3 text-right">
-                                                    <span
-                                                        class="badge badge-xs badge-<?php echo e(\Auth::user()->checkProject($due_project->id) == 'Owner' ? 'success' : 'warning'); ?>"><?php echo e(__(\Auth::user()->checkProject($due_project->id))); ?></span>
-                                                </div>
-                                            </div>
-                                            <div class="progress progress-xs mb-0">
-                                                <div class="progress-bar bg-<?php echo e($due_project->project_progress()['color']); ?>"
-                                                    role="progressbar"
-                                                    style="width: <?php echo e($due_project->project_progress()['percentage']); ?>;"
-                                                    aria-valuenow="<?php echo e($due_project->project_progress()['percentage']); ?>"
-                                                    aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                            <div
-                                                class="d-flex justify-content-between text-xs text-muted text-right mt-1">
-                                                <div>
-                                                    <span
-                                                        class="font-weight-bold text-<?php echo e(\App\Models\Project::$status_color[$due_project->status]); ?>"><?php echo e(__(\App\Models\Project::$status[$due_project->status])); ?></span>
-                                                </div>
-                                                <div>
-                                                    <?php echo e($due_project->countTask(Auth::user()->id)); ?>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        <?php else: ?>
-                            <div class="py-5">
-                                <h6 class="text-center mb-0"><?php echo e(__('No Due Tasks Found.')); ?></h6>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-
-                </div>
-            </div>
-        </div>
+        
         <!-- <div class="row">
             <div class="col-12">
                 <div class="card card-fluid">

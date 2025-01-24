@@ -9,6 +9,8 @@
     $logo = \App\Models\Utility::get_file('logo/');
     $path_imgs = \App\Models\Utility::get_file('/');
     $setting = \App\Models\Utility::settings();
+    $defaultLanguage = App\Models\Utility::getValByName('default_owner_language');
+
 @endphp
 
 @push('css')
@@ -40,7 +42,6 @@
         <div class="col-lg-4 order-lg-2">
             <div class="card">
                 <div class="list-group list-group-flush" id="tabs">
-                    @if (Auth::user()->type != 'client')
                         <div data-href="#tabs-9" class="list-group-item text-primary">
                             <div class="media">
                                 <i class="fas fa-cog pt-1"></i>
@@ -50,9 +51,8 @@
                                 </div>
                             </div>
                         </div>
-                    @endif
 
-                    @if (Auth::user()->type != 'client')
+                    <!-- @if (Auth::user()->type != 'client')
                         <div data-href="#tabs-1" class="list-group-item">
                             <div class="media">
                                 <i class="fas fa-cog pt-1"></i>
@@ -62,9 +62,9 @@
                                 </div>
                             </div>
                         </div>
-                    @endif
+                    @endif -->
 
-                    @if (Auth::user()->type != 'client')
+                    <!-- @if (Auth::user()->type != 'client')
                         <div data-href="#tabs-4" class="list-group-item">
                             <div class="media">
                                 <i class="fas fa-money-check-alt pt-1"></i>
@@ -120,9 +120,9 @@
                                 </div>
                             </div>
                         </div>
-                    @endif
+                    @endif -->
 
-                    @if (\Auth::user()->type == 'owner')
+                    <!-- @if (\Auth::user()->type == 'owner')
                         <div data-href="#tabs-6" class="list-group-item">
                             <div class="media">
                                 <i class="fas fa-stopwatch pt-1"></i>
@@ -133,8 +133,8 @@
                                 </div>
                             </div>
                         </div>
-                    @endif
-                    @if (\Auth::user()->type == 'owner')
+                    @endif -->
+                    <!-- @if (\Auth::user()->type == 'owner')
                         <div data-href="#tabs-7" class="list-group-item">
                             <div class="media">
                                 <i class="fab fa-slack"></i>
@@ -144,8 +144,8 @@
                                 </div>
                             </div>
                         </div>
-                    @endif
-                    @if (\Auth::user()->type == 'owner')
+                    @endif -->
+                    <!-- @if (\Auth::user()->type == 'owner')
                         <div data-href="#tabs-8" class="list-group-item">
                             <div class="media">
                                 <i class="fa fa-paper-plane"></i>
@@ -156,9 +156,9 @@
                                 </div>
                             </div>
                         </div>
-                    @endif
+                    @endif -->
 
-                    @if (\Auth::user()->type == 'owner')
+                    <!-- @if (\Auth::user()->type == 'owner')
                         <div data-href="#tabs-11" class="list-group-item">
                             <div class="media">
                                 <i class="fas fa-calendar-week"></i>
@@ -169,9 +169,9 @@
                                 </div>
                             </div>
                         </div>
-                    @endif
+                    @endif -->
 
-                    @if (\Auth::user()->type == 'owner')
+                    <!-- @if (\Auth::user()->type == 'owner')
                         <div data-href="#tabs-12" class="list-group-item">
                             <div class="media">
                                 <i class="fab fa-atlassian"></i>
@@ -182,9 +182,9 @@
                                 </div>
                             </div>
                         </div>
-                    @endif
+                    @endif -->
 
-                    @if (\Auth::user()->type == 'owner')
+                    <!-- @if (\Auth::user()->type == 'owner')
                         <div data-href="#tabs-13" class="list-group-item">
                             <div class="media">
                                 <i class="fas fa-envelope pt-1"></i>
@@ -194,12 +194,11 @@
                                 </div>
                             </div>
                         </div>
-                    @endif
+                    @endif -->
                 </div>
             </div>
         </div>
         <div class="col-lg-8 order-lg-1">
-            @if (Auth::user()->type != 'client')
                 <div id="tabs-9" class="tabs-card">
                     <div class="card">
                         <div class="card-header">
@@ -258,13 +257,14 @@
 
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-0 mt-3">
+                                        <div class="col-12 p-0 mt-3">
                                             {{ Form::label('default_owner_language', __('Default Language'), ['class' => 'form-control-label text-dark']) }}
-                                            <select name="default_owner_language" id="default_owner_language"
-                                                class="form-control select2">
+                                            <select name="default_owner_language" id="default_owner_language" class="form-control select2">
                                                 @foreach (App\Models\Utility::languages() as $code => $lang)
-                                                    <option @if (App\Models\Utility::getValByName('default_owner_language') == $code) selected @endif
-                                                        value="{{ $code }}">{{ ucfirst($lang) }}</option>
+                                                    <option value="{{ $code }}" 
+                                                        @if (App\Models\Utility::getValByName('default_owner_language') == $code) selected @endif>
+                                                        {{ ucfirst($lang) }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -283,7 +283,6 @@
                         </div>
                     </div>
                 </div>
-            @endif
 
             @if (Auth::user()->type != 'client')
                 <div id="tabs-1" class="tabs-card d-none">
@@ -398,7 +397,7 @@
                     <div id="tabs-2" class="tabs-card">
             @endif
 
-            <div class="card">
+            <!-- <div class="card">
                 <div class="card-header">
                     <h5 class="h6 mb-0">{{ __('My Billing Detail') }}</h5>
                     <small>{{ __('This detail will show in your Invoice.') }}</small>
@@ -451,7 +450,7 @@
                     </div>
                     {{ Form::close() }}
                 </div>
-            </div>
+            </div> -->
         </div>
         @if (Auth::user()->type != 'client')
             <div id="tabs-3" class="tabs-card d-none">

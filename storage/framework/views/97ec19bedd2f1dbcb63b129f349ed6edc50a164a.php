@@ -110,7 +110,7 @@ $logo_path = \App\Models\Utility::get_file('/');
     <div class="col-xl-12 col-lg-12 col-sm-12">
         <div class="card">
             <div class="card-body">
-                <h6 class="text-center mb-0"><?php echo e(__('No Projects Found.')); ?></h6>
+                <h6 class="text-center mb-0"><?php echo e(__('No Tasks Found.')); ?></h6>
             </div>
         </div>
     </div>
