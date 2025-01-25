@@ -29,14 +29,23 @@
     <div class="col-md-12 col-12">
         <label class="form-control-label"><?php echo e(__('Role')); ?></label> <br>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-primary btn-sm active">
-                <input type="radio" name="user_type" id="radio_user" autocomplete="off" value="user" checked><?php echo e(__('Team Lead')); ?>
+            <?php if(auth()->user()->type == 'user'): ?>
+                <!-- Only display the "Team Member" radio button -->
+                <label class="btn btn-primary btn-sm active">
+                    <input type="radio" name="user_type" id="radio_client" autocomplete="off" value="client" checked><?php echo e(__('Team Member')); ?>
 
-            </label>
-            <label class="btn btn-primary btn-sm">
-                <input type="radio" name="user_type" id="radio_client" autocomplete="off" value="client"><?php echo e(__('Team Member')); ?>
+                </label>
+            <?php else: ?>
+                <!-- Display both options for other roles -->
+                <label class="btn btn-primary btn-sm active">
+                    <input type="radio" name="user_type" id="radio_user" autocomplete="off" value="user" checked><?php echo e(__('Team Lead')); ?>
 
-            </label>
+                </label>
+                <label class="btn btn-primary btn-sm">
+                    <input type="radio" name="user_type" id="radio_client" autocomplete="off" value="client"><?php echo e(__('Team Member')); ?>
+
+                </label>
+            <?php endif; ?>
         </div>
     </div>
 </div>

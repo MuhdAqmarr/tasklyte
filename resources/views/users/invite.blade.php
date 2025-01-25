@@ -23,12 +23,20 @@
     <div class="col-md-12 col-12">
         <label class="form-control-label">{{__('Role')}}</label> <br>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-primary btn-sm active">
-                <input type="radio" name="user_type" id="radio_user" autocomplete="off" value="user" checked>{{__('Team Lead')}}
-            </label>
-            <label class="btn btn-primary btn-sm">
-                <input type="radio" name="user_type" id="radio_client" autocomplete="off" value="client">{{__('Team Member')}}
-            </label>
+            @if(auth()->user()->type == 'user')
+                <!-- Only display the "Team Member" radio button -->
+                <label class="btn btn-primary btn-sm active">
+                    <input type="radio" name="user_type" id="radio_client" autocomplete="off" value="client" checked>{{__('Team Member')}}
+                </label>
+            @else
+                <!-- Display both options for other roles -->
+                <label class="btn btn-primary btn-sm active">
+                    <input type="radio" name="user_type" id="radio_user" autocomplete="off" value="user" checked>{{__('Team Lead')}}
+                </label>
+                <label class="btn btn-primary btn-sm">
+                    <input type="radio" name="user_type" id="radio_client" autocomplete="off" value="client">{{__('Team Member')}}
+                </label>
+            @endif
         </div>
     </div>
 </div>

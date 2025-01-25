@@ -53,7 +53,7 @@
             <?php echo e(Form::label('estimated_hrs', __('Estimated Hours'), ['class' => 'form-control-label'])); ?>
 
             <small
-                class="form-text text-muted mb-2 mt-0"><?php echo e(__('Total hrs of project ') . $hrs['total'] . __(' & allocated total ') . $hrs['allocated'] . __(' hrs in other tasks')); ?></small>
+                class="form-text text-muted mb-2 mt-0"><?php echo e(__('Total hrs of task ') . $hrs['total'] . __(' & allocated total ') . $hrs['allocated'] . __(' hrs in other subtasks')); ?></small>
             <?php echo e(Form::number('estimated_hrs', null, ['class' => 'form-control', 'required' => 'required', 'min' => '0', 'maxlength' => '8'])); ?>
 
         </div>
@@ -62,7 +62,7 @@
         <div class="form-group">
             <?php echo e(Form::label('priority', __('Priority'), ['class' => 'form-control-label'])); ?>
 
-            <small class="form-text text-muted mb-2 mt-0"><?php echo e(__('Set Priority of your task')); ?></small>
+            <small class="form-text text-muted mb-2 mt-0"><?php echo e(__('Set Priority of your subtask')); ?></small>
             <select class="form-control" name="priority" id="priority" required>
                 <?php $__currentLoopData = \App\Models\ProjectTask::$priority; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <option value="<?php echo e($key); ?>"><?php echo e(__($val)); ?></option>
@@ -89,8 +89,8 @@
 </div>
 
 <div class="form-group">
-    <label class="form-control-label"><?php echo e(__('Task members')); ?></label>
-    <small class="form-text text-muted mb-2 mt-0"><?php echo e(__('Below users are assigned in your project.')); ?></small>
+    <label class="form-control-label"><?php echo e(__('Subtask members')); ?></label>
+    <small class="form-text text-muted mb-2 mt-0"><?php echo e(__('Below members are assigned in your tasks.')); ?></small>
 </div>
 <div class="list-group list-group-flush mb-4">
     <div class="row">

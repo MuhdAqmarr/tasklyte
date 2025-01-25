@@ -187,7 +187,7 @@
                         </div>
                     <?php endif; ?> -->
 
-                    <!-- <?php if(\Auth::user()->type == 'owner'): ?>
+                    <?php if(\Auth::user()->type == 'owner'): ?>
                         <div data-href="#tabs-13" class="list-group-item">
                             <div class="media">
                                 <i class="fas fa-envelope pt-1"></i>
@@ -197,7 +197,7 @@
                                 </div>
                             </div>
                         </div>
-                    <?php endif; ?> -->
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

@@ -69,7 +69,7 @@ $logo_path=\App\Models\Utility::get_file('/');
             </ul>
         </div>
         <div class="collapse navbar-collapse navbar-collapse-fade" id="navbar-main-collapse">
-            <ul class="navbar-nav align-items-center d-none d-lg-flex">
+            <!-- <ul class="navbar-nav align-items-center d-none d-lg-flex">
 
                 <li class="ml-2">
                     <div class="row{{!empty($userTask)?"mt-3":""}}">
@@ -100,7 +100,7 @@ $logo_path=\App\Models\Utility::get_file('/');
                         </li>
                     @endif
                 @endif
-            </ul>
+            </ul> -->
 
             <ul class="navbar-nav ml-lg-auto align-items-center d-none d-lg-flex">
                 <li class="nav-item">

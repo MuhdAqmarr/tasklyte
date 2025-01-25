@@ -45,7 +45,7 @@ $logo=\App\Models\Utility::get_file('/');
                             </div>
                         </div>
                     </div>
-                    @if(\Auth::user()->type == 'owner')
+                    <!-- @if(\Auth::user()->type == 'owner')
                         <div data-href="#tabs-3" class="list-group-item">
                             <div class="media">
                                 <i class="fas fa-credit-card"></i>
@@ -55,7 +55,7 @@ $logo=\App\Models\Utility::get_file('/');
                                 </div>
                             </div>
                         </div>
-                    @endif
+                    @endif -->
                 </div>
             </div>
         </div>

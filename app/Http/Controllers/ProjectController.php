@@ -101,7 +101,7 @@ class ProjectController extends Controller
             {
                 $validation = [
                     'title' => 'required|max:120',
-                    'currency' => 'required',
+                    'currency' => '',
                 ];
 
                 if($request->hasFile('image'))
@@ -459,10 +459,10 @@ class ProjectController extends Controller
             elseif($request->from == 'financial')
             {
                 $validation = [
-                    'budget' => 'required|numeric',
-                    'currency' => 'required',
-                    'currency_code' => 'required',
-                    'currency_position' => 'required',
+                    'budget' => '',
+                    'currency' => '',
+                    'currency_code' => '',
+                    'currency_position' => '',
                     'estimated_hrs' => 'required|numeric|min:0',
                 ];
             }
